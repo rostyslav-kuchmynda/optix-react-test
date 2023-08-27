@@ -1,0 +1,26 @@
+@import '../../scss/base';
+
+.totalMoviesWrap {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  font-size: $font-l;
+
+  .totalMoviesDisplay {
+    font-size: $font-m;
+    font-weight: 300;
+    text-align: center;
+  }
+
+  .totalMoviesDisplayWarning {
+    color: $alert;
+  }
+}
+
+@media (min-width: 500px) {
+  .totalMoviesWrap {
+    .totalMoviesDisplay {
+      font-size: $font-l;
+    }
+  }
+}

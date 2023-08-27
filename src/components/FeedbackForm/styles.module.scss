@@ -1,0 +1,46 @@
+@import '../../scss/base';
+
+.feedbackFormWrapper {
+  padding-inline: 2.4rem;
+  padding-block: 2.4rem;
+
+  .feedbackFormTitle {
+    text-align: center;
+    font-weight: 300;
+    padding-block: 1.6rem;
+    font-size: $font-xl;
+
+    >b {
+      font-weight: 500;
+    }
+  }
+
+  .formWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .textAreaStyles {
+    width: 32rem;
+    font-size: $font-m;
+    font-weight: 400;
+    line-height: 1.5;
+    padding: 1.2rem;
+    border-radius: 1.2rem 12px 0 1.2rem;
+    color: $black;
+    border: 0.1rem solid $black;
+    box-shadow: 0px 0.2rem 0.2rem grey;
+    resize: none;
+    margin: 1.6rem;
+
+    &:hover {
+      border-color: grey;
+    }
+
+    &:focus {
+      border-color: orange;
+      box-shadow: 0 0 0 0.3rem grey;
+    }
+  }
+}

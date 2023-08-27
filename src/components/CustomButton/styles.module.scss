@@ -1,0 +1,17 @@
+@import '../../scss/base';
+
+.customButton {
+  color: $black !important;
+  border: 0.1rem solid $black !important;
+  border-radius: 0.4rem;
+  transition: all 0.3s;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  &:active {
+    border: 0.1rem solid $black;
+    transform: scale(1);
+  }
+}

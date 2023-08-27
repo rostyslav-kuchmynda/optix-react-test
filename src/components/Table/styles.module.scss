@@ -1,0 +1,28 @@
+@import '../../scss/base';
+
+.tableContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-inline: 2.4rem;
+  height: 40rem;
+
+  .tableDataGrid {
+    font-size: 1rem;
+  }
+
+  :global {
+    .MuiDataGrid-columnHeaderTitle {
+      letter-spacing: 0.15rem;
+      font-weight: 800;
+    }
+  }
+}
+
+@media (min-width: 500px) {
+  .tableContainer {
+    .tableDataGrid {
+      font-size: 1.4rem;
+    }
+  }
+}

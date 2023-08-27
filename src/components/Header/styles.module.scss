@@ -1,0 +1,36 @@
+@import '../../scss/base';
+
+.headerWrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 2.4rem;
+  padding-block: 1.2rem;
+  margin-block-end: 2.4rem;
+  box-shadow: 0 0 0.1rem $black;
+
+  :global {
+    .MuiTypography-h1 {
+      margin: 0;
+      margin-block-end: 2.4rem;
+      font-size: $font-l;
+      font-weight: 400;
+    }
+  }
+}
+
+@media (min-width: 500px) {
+  .headerWrap {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    :global {
+      .MuiTypography-h1 {
+        font-size: $font-xl;
+        margin-block-end: 0;
+      }
+    }
+  }
+}
