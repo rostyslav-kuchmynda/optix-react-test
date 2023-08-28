@@ -1,11 +1,11 @@
+import { useEffect } from 'react';
 import cc from 'classcat';
 
 import { SnackbarProps } from '../../types';
+import { useTypedDispatch, useTypedSelector } from '../../hooks';
+import { getSuccessMessage, uiSetSuccessMessage } from '../../store';
 
 import classes from './styles.module.scss';
-import { useEffect } from 'react';
-import { getSuccessMessage, uiSetSuccessMessage } from '../../store';
-import { useTypedDispatch, useTypedSelector } from '../../hooks';
 
 const MSEC = 2000;
 

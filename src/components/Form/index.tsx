@@ -83,7 +83,7 @@ export const TextAreaForm: React.FC = () => {
     [setTextAreaValue]
   );
 
-  if (!showTextArea) return;
+  if (!showTextArea) return null;
 
   return (
     <>

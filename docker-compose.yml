@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  optix_react_app:
+    build: ./optix_react_app
+    container_name: optix_react_app_c
+    ports:
+      - '8080:8080'
+    stdin_open: true
+    tty: true

@@ -25,7 +25,7 @@ export const FeedbackForm: React.FC = () => {
     [selectedMovie, rowIndex, isLoaded]
   );
 
-  if (!showForm) return;
+  if (!showForm) return null;
 
   return (
     <section className={classes.feedbackFormWrapper}>

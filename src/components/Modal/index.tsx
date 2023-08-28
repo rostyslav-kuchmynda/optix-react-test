@@ -1,9 +1,12 @@
 import { useCallback } from 'react';
 import { createPortal } from 'react-dom';
 
+import CloseIcon from '@mui/icons-material/Close';
+import { Typography } from '@mui/material';
 import { TextAreaForm } from '../Form';
 
 import { useTypedDispatch, useTypedSelector } from '../../hooks';
+import { MovieDataType } from '../../types';
 import {
   getIsModalOpen,
   getSelectedMovie,
@@ -14,10 +17,6 @@ import {
 } from '../../store';
 
 import classes from './styles.module.scss';
-
-import CloseIcon from '@mui/icons-material/Close';
-import { Typography } from '@mui/material';
-import { MovieDataType } from '../../types';
 
 export const ModalForm: React.FC = () => {
   const dispatch = useTypedDispatch();

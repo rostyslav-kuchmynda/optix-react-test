@@ -25,6 +25,9 @@ export const AppLayout = () => {
   const isSmallBreakPoint = useWidthObserver(BREAKPOINT);
 
   const successMessage = useTypedSelector(getSuccessMessage);
+  const movies = useTypedSelector(getMoviesList);
+  const refreshFrag = useTypedSelector(getRefreshFlag);
+  const isLoaded = useTypedSelector(getIsLoading);
 
   const showSuccessPopup = useMemo(
     () => successMessage.length > 0 && isSmallBreakPoint,
@@ -34,10 +37,6 @@ export const AppLayout = () => {
   useEffect(() => {
     dispatch(uiSetIsSmallDevice(isSmallBreakPoint));
   }, [dispatch, isSmallBreakPoint]);
-
-  const movies = useTypedSelector(getMoviesList);
-  const refreshFrag = useTypedSelector(getRefreshFlag);
-  const isLoaded = useTypedSelector(getIsLoading);
 
   useEffect(() => {
     dispatch(uiFetchMoviesData());
