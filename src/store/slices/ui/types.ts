@@ -10,6 +10,8 @@ export type UIStateSlice = {
   refreshFlag: boolean;
   selectedRowIndex: GridRowSelectionType;
   successMessage: string;
+  isModalFormOpen: boolean;
+  isSmallDevice: boolean;
 };
 
 export type UIStoreSlice = { [UI_SLICE_ID]: UIStateSlice };

@@ -32,14 +32,8 @@
     "no-console": "warn",
     "react-hooks/rules-of-hooks": "warn",
     "react-hooks/exhaustive-deps": "warn",
-    "@typescript-eslint/ban-types": [
-      "error",
-      {
-        "extendDefaults": true,
-        "types": {
-          "{}": false
-        }
-      }
-    ]
+    "no-unused-vars": "warn",
+    "@typescript-eslint/no-unused-vars": ["warn"],
+    "@typescript-eslint/ban-types": "off"
   }
 }

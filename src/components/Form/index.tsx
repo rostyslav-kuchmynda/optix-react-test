@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -12,9 +12,11 @@ import { MoviesService } from '../../services/movies';
 import { useTypedDispatch, useTypedSelector } from '../../hooks';
 import {
   getIsLoading,
+  getIsModalOpen,
   getSelectedMovie,
   getSelectedRowIndex,
   uiClearSelectedRowIndex,
+  uiCloseModalForm,
   uiSetSuccessMessage,
 } from '../../store';
 import { ReviewType } from '../../types';
@@ -49,6 +51,7 @@ export const TextAreaForm: React.FC = () => {
   const isLoaded = useTypedSelector(getIsLoading);
   const selectedMovie = useTypedSelector(getSelectedMovie);
   const rowIndex = useTypedSelector(getSelectedRowIndex);
+  const isOpen = useTypedSelector(getIsModalOpen);
 
   const showTextArea = useMemo(
     () => isLoaded && Object.keys(selectedMovie).length && rowIndex.length,
@@ -64,10 +67,13 @@ export const TextAreaForm: React.FC = () => {
       if (data?.review) {
         MoviesService.submitReview(data?.review).then(val => dispatch(uiSetSuccessMessage(val.message)));
       }
+      if (isOpen) {
+        dispatch(uiCloseModalForm());
+      }
       dispatch(uiClearSelectedRowIndex());
       reset();
     },
-    [dispatch, reset]
+    [dispatch, reset, isOpen]
   );
 
   const handleOnChange = useCallback(

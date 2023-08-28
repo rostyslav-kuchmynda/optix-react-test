@@ -7,6 +7,9 @@ import {
   uiTriggerRefresh,
   uiClearSelectedRowIndex,
   uiSetSuccessMessage,
+  uiOpenModalForm,
+  uiCloseModalForm,
+  uiSetIsSmallDevice,
 } from './actions';
 
 import { UI_SLICE_ID, UIStateSlice } from './types';
@@ -15,10 +18,14 @@ const uiInitialState: UIStateSlice = {
   moviesList: [],
   selectedMovie: {},
   selectedRowIndex: [],
+
   totalMovies: 0,
+  successMessage: '',
+
   layoutDataLoaded: false,
   refreshFlag: true,
-  successMessage: '',
+  isModalFormOpen: false,
+  isSmallDevice: false,
 };
 
 export const uiSlice = createSlice({
@@ -51,6 +58,18 @@ export const uiSlice = createSlice({
 
     builder.addCase(uiSetSuccessMessage, (state, { payload }) => {
       state.successMessage = payload;
+    });
+
+    builder.addCase(uiOpenModalForm, state => {
+      state.isModalFormOpen = true;
+    });
+
+    builder.addCase(uiCloseModalForm, state => {
+      state.isModalFormOpen = false;
+    });
+
+    builder.addCase(uiSetIsSmallDevice, (state, { payload }) => {
+      state.isSmallDevice = payload;
     });
   },
 });

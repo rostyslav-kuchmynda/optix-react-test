@@ -6,7 +6,12 @@ import { GridRowSelectionType, MovieDataType } from '../../../types';
 import { mergeMoviesDataByID } from '../../../utils/array';
 import { UI_SLICE_ID } from '../ui/types';
 
+export const uiOpenModalForm = createAction(`${UI_SLICE_ID}/openModal`);
+export const uiCloseModalForm = createAction(`${UI_SLICE_ID}/closeModal`);
 export const uiTriggerRefresh = createAction(`${UI_SLICE_ID}/triggerRefresh`);
+export const uiSetIsSmallDevice = createAction(`${UI_SLICE_ID}/isSmallDevice`, (isSmall: boolean) => {
+  return { payload: isSmall };
+});
 export const uiSetSuccessMessage = createAction(`${UI_SLICE_ID}/successMsg`, (message: string) => {
   return { payload: message };
 });

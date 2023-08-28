@@ -18,10 +18,11 @@ export const FeedbackForm: React.FC = () => {
   const successMessage = useTypedSelector(getSuccessMessage);
 
   const showForm = useMemo(() => isLoaded && movies.length, [movies, isLoaded]);
+
   const showSuccess = useMemo(() => successMessage.length > 0, [successMessage]);
   const showTextArea = useMemo(
     () => isLoaded && Object.keys(selectedMovie).length && rowIndex.length,
-    [selectedMovie, rowIndex, isLoaded, showSuccess]
+    [selectedMovie, rowIndex, isLoaded]
   );
 
   if (!showForm) return;

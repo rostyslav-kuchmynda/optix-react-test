@@ -22,4 +22,5 @@ export type SnackbarProps = {
   condition: boolean;
   success?: boolean;
   message?: string;
+  className?: string;
 };

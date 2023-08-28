@@ -6,8 +6,10 @@ import { useTypedDispatch, useTypedSelector } from '../../hooks';
 import { DataTableTypes, MovieDataType } from '../../types';
 import { averageRating } from '../../utils/array';
 import {
+  getIsSmallDevice,
   getSelectedRowIndex,
   getSuccessMessage,
+  uiOpenModalForm,
   uiSelectMovie,
   uiSetSelectedRowIndex,
   uiSetSuccessMessage,
@@ -40,8 +42,17 @@ export const DataTable: React.FC<DataTableTypes> = ({ isLoaded, moviesData }) =>
   const dispatch = useTypedDispatch();
   const rowIndex = useTypedSelector(getSelectedRowIndex);
   const successMessage = useTypedSelector(getSuccessMessage);
+  const isSmallDevice = useTypedSelector(getIsSmallDevice);
 
-  const handleRowClick = useCallback((movie: MovieDataType) => dispatch(uiSelectMovie(movie)), [dispatch]);
+  const handleRowClick = useCallback(
+    (movie: MovieDataType) => {
+      dispatch(uiSelectMovie(movie));
+      if (isSmallDevice) {
+        dispatch(uiOpenModalForm());
+      }
+    },
+    [dispatch, isSmallDevice]
+  );
 
   const handleSetRowIdx = useCallback(
     (newRowSelectionModel: GridRowSelectionModel) => {
