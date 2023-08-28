@@ -3,7 +3,7 @@ import { useCallback } from 'react';
 import { Typography } from '@mui/material';
 import { CustomButton } from '../CustomButton';
 
-import { useTypedDispatch, useTypedSelector } from '../../hooks/storeHooks';
+import { useTypedDispatch, useTypedSelector } from '../../hooks';
 import {
   getSuccessMessage,
   getTotalMovies,

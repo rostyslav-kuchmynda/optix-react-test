@@ -4,7 +4,7 @@ import { Typography } from '@mui/material';
 import { TextAreaForm } from '../Form';
 import { Snackbar } from '../Snackbar';
 
-import { useTypedSelector } from '../../hooks/storeHooks';
+import { useTypedSelector } from '../../hooks';
 import { MovieDataType } from '../../types';
 import { getIsLoading, getMoviesList, getSelectedMovie, getSelectedRowIndex, getSuccessMessage } from '../../store';
 

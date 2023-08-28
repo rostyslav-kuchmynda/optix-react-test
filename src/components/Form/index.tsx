@@ -9,7 +9,7 @@ import { CharacterLimit } from '../CharacterLimit';
 import { Snackbar } from '../Snackbar';
 
 import { MoviesService } from '../../services/movies';
-import { useTypedDispatch, useTypedSelector } from '../../hooks/storeHooks';
+import { useTypedDispatch, useTypedSelector } from '../../hooks';
 import {
   getIsLoading,
   getSelectedMovie,

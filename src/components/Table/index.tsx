@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 import { DataGrid, GridColDef, GridRowSelectionModel } from '@mui/x-data-grid';
 import { CircularProgress } from '@mui/material';
 
-import { useTypedDispatch, useTypedSelector } from '../../hooks/storeHooks';
+import { useTypedDispatch, useTypedSelector } from '../../hooks';
 import { DataTableTypes, MovieDataType } from '../../types';
 import { averageRating } from '../../utils/array';
 import {
