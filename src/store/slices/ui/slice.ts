@@ -6,6 +6,7 @@ import {
   uiSetSelectedRowIndex,
   uiTriggerRefresh,
   uiClearSelectedRowIndex,
+  uiSetSuccessMessage,
 } from './actions';
 
 import { UI_SLICE_ID, UIStateSlice } from './types';
@@ -17,6 +18,7 @@ const uiInitialState: UIStateSlice = {
   totalMovies: 0,
   layoutDataLoaded: false,
   refreshFlag: true,
+  successMessage: '',
 };
 
 export const uiSlice = createSlice({
@@ -45,6 +47,10 @@ export const uiSlice = createSlice({
 
     builder.addCase(uiClearSelectedRowIndex, state => {
       state.selectedRowIndex = [];
+    });
+
+    builder.addCase(uiSetSuccessMessage, (state, { payload }) => {
+      state.successMessage = payload;
     });
   },
 });

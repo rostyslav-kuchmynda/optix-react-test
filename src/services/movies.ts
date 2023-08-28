@@ -1,7 +1,5 @@
 import { MovieCompanyType, MovieType } from '../types';
 
-const { VITE_REACT_MOVIES_API } = import.meta.env;
-
 export class MoviesService {
   static async getMovieCompanies(): Promise<Array<MovieCompanyType>> {
     try {
@@ -40,9 +38,9 @@ export class MoviesService {
     }
   }
 
-  static async submitReview(message: string): Promise<string> {
+  static async submitReview(message: string): Promise<{ message: string }> {
     try {
-      const response = await fetch(`${VITE_REACT_MOVIES_API}/submitReview`, {
+      const response = await fetch(`/submitReview`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -50,11 +48,11 @@ export class MoviesService {
         body: JSON.stringify({ review: message }),
       });
 
-      return response.json();
+      return await response.json();
     } catch (error) {
       console.error('Failed to submit a review. Ended with error:', (error as Error).message);
 
-      return 'Failed to submit a review!';
+      return { message: 'Failed to submit a review!' };
     }
   }
 }

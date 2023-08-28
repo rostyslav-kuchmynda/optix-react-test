@@ -20,6 +20,12 @@ export default defineConfig({
         secure: false,
         ws: true,
       },
+      '/submitReview': {
+        target: 'https://comforting-starlight-f3456a.netlify.app/.netlify/functions',
+        changeOrigin: true,
+        secure: false,
+        ws: true,
+      },
     },
   },
 });

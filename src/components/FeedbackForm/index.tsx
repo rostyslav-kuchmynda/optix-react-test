@@ -1,46 +1,27 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useMemo } from 'react';
 
 import { Typography } from '@mui/material';
-import { TextareaAutosize } from '@mui/base/TextareaAutosize';
-import { CustomButton } from '../CustomButton';
+import { TextAreaForm } from '../Form';
+import { Snackbar } from '../Snackbar';
 
-import { useTypedDispatch, useTypedSelector } from '../../hooks/storeHooks';
-import {
-  getIsLoading,
-  getMoviesList,
-  getSelectedMovie,
-  getSelectedRowIndex,
-  uiClearSelectedRowIndex,
-} from '../../store';
+import { useTypedSelector } from '../../hooks/storeHooks';
+import { MovieDataType } from '../../types';
+import { getIsLoading, getMoviesList, getSelectedMovie, getSelectedRowIndex, getSuccessMessage } from '../../store';
 
 import classes from './styles.module.scss';
-import { MovieDataType } from '../../types';
-
-const MIN_ROWS = 4;
 
 export const FeedbackForm: React.FC = () => {
-  const dispatch = useTypedDispatch();
-  const [textAreaValue, setTextAreaValue] = useState('');
-
   const isLoaded = useTypedSelector(getIsLoading);
   const selectedMovie = useTypedSelector(getSelectedMovie);
   const rowIndex = useTypedSelector(getSelectedRowIndex);
   const movies = useTypedSelector(getMoviesList);
-
-  const showTextArea = useMemo(
-    () => isLoaded && Object.keys(selectedMovie).length && rowIndex.length,
-    [selectedMovie, rowIndex, isLoaded]
-  );
+  const successMessage = useTypedSelector(getSuccessMessage);
 
   const showForm = useMemo(() => isLoaded && movies.length, [movies, isLoaded]);
-
-  const handleSubmit = useCallback(
-    (e: React.FormEvent) => {
-      e.preventDefault();
-      dispatch(uiClearSelectedRowIndex());
-      setTextAreaValue('');
-    },
-    [dispatch]
+  const showSuccess = useMemo(() => successMessage.length > 0, [successMessage]);
+  const showTextArea = useMemo(
+    () => isLoaded && Object.keys(selectedMovie).length && rowIndex.length,
+    [selectedMovie, rowIndex, isLoaded, showSuccess]
   );
 
   if (!showForm) return;
@@ -48,22 +29,17 @@ export const FeedbackForm: React.FC = () => {
   return (
     <section className={classes.feedbackFormWrapper}>
       {showTextArea ? (
-        <>
+        <div className={classes.formContainer}>
           <Typography className={classes.feedbackFormTitle}>
             Please submit the feedback for <b>{(selectedMovie as MovieDataType)?.title}</b>.
           </Typography>
-          <form onSubmit={handleSubmit} className={classes.formWrapper}>
-            <TextareaAutosize
-              className={classes.textAreaStyles}
-              minRows={MIN_ROWS}
-              value={textAreaValue}
-              onChange={e => setTextAreaValue(e.target.value)}
-            />
-            <CustomButton type="submit" label={'Submit'} />
-          </form>
-        </>
+          <TextAreaForm />
+        </div>
       ) : (
-        <Typography className={classes.feedbackFormTitle}>Please select movie to leave a review.</Typography>
+        <div className={classes.feedbackFormTitleContainer}>
+          <Typography className={classes.feedbackFormTitle}>Please select movie to leave a review.</Typography>
+          <Snackbar success condition={showSuccess} message={successMessage} />
+        </div>
       )}
     </section>
   );

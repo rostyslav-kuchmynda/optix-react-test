@@ -1,0 +1,14 @@
+@import '../../scss/base';
+
+.numberOfChar {
+  position: absolute;
+  bottom: 1.6rem;
+  right: 2.4rem;
+  font-size: $font-s;
+  user-select: none;
+  pointer-events: none;
+}
+
+.numberOfCharAlert {
+  color: $alert;
+}

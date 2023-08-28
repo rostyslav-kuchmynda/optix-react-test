@@ -1,5 +1,4 @@
-import { GridRowSelectionType } from '../../../types';
-import { MovieDataType } from '../../../types';
+import { GridRowSelectionType, MovieDataType } from '../../../types';
 
 export const UI_SLICE_ID = 'ui';
 
@@ -10,6 +9,7 @@ export type UIStateSlice = {
   layoutDataLoaded: boolean;
   refreshFlag: boolean;
   selectedRowIndex: GridRowSelectionType;
+  successMessage: string;
 };
 
 export type UIStoreSlice = { [UI_SLICE_ID]: UIStateSlice };

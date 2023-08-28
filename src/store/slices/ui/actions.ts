@@ -7,6 +7,9 @@ import { mergeMoviesDataByID } from '../../../utils/array';
 import { UI_SLICE_ID } from '../ui/types';
 
 export const uiTriggerRefresh = createAction(`${UI_SLICE_ID}/triggerRefresh`);
+export const uiSetSuccessMessage = createAction(`${UI_SLICE_ID}/successMsg`, (message: string) => {
+  return { payload: message };
+});
 
 export const uiSelectMovie = createAction(`${UI_SLICE_ID}/selectMovie`, (movie: MovieDataType) => {
   return { payload: movie };

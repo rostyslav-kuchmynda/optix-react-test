@@ -1,0 +1,21 @@
+@import '../../scss/base';
+
+.alert {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: $font-s;
+  padding: 0.5rem;
+  border-radius: 0.4rem;
+  max-width: 32rem;
+  width: 100%;
+  border: 0.1rem solid $alert;
+  background-color: lighten($alert, 35%);
+  transition: all 0.5s ease;
+}
+
+.success {
+  @extend .alert;
+  border: 0.1rem solid $success;
+  background-color: lighten($success, 35%);
+}

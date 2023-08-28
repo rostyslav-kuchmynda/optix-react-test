@@ -9,3 +9,4 @@ export const getTotalMovies = createSelector(rootUISelector, state => state.tota
 export const getIsLoading = createSelector(rootUISelector, state => state.layoutDataLoaded);
 export const getSelectedMovie = createSelector(rootUISelector, state => state.selectedMovie);
 export const getSelectedRowIndex = createSelector(rootUISelector, state => state.selectedRowIndex);
+export const getSuccessMessage = createSelector(rootUISelector, state => state.successMessage);

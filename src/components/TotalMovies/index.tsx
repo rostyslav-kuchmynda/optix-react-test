@@ -4,7 +4,13 @@ import { Typography } from '@mui/material';
 import { CustomButton } from '../CustomButton';
 
 import { useTypedDispatch, useTypedSelector } from '../../hooks/storeHooks';
-import { getTotalMovies, uiClearSelectedRowIndex, uiTriggerRefresh } from '../../store';
+import {
+  getSuccessMessage,
+  getTotalMovies,
+  uiClearSelectedRowIndex,
+  uiSetSuccessMessage,
+  uiTriggerRefresh,
+} from '../../store';
 
 import classes from './styles.module.scss';
 
@@ -12,11 +18,15 @@ export const TotalMovies = () => {
   const dispatch = useTypedDispatch();
 
   const totalMovies = useTypedSelector(getTotalMovies);
+  const successMessage = useTypedSelector(getSuccessMessage);
 
   const handleRefresh = useCallback(() => {
     dispatch(uiTriggerRefresh());
     dispatch(uiClearSelectedRowIndex());
-  }, [dispatch]);
+    if (successMessage.length) {
+      dispatch(uiSetSuccessMessage(''));
+    }
+  }, [dispatch, successMessage]);
 
   return (
     <div className={classes.totalMoviesWrap}>

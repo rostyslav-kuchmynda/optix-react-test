@@ -5,7 +5,13 @@ import { CircularProgress } from '@mui/material';
 import { useTypedDispatch, useTypedSelector } from '../../hooks/storeHooks';
 import { DataTableTypes, MovieDataType } from '../../types';
 import { averageRating } from '../../utils/array';
-import { getSelectedRowIndex, uiSelectMovie, uiSetSelectedRowIndex } from '../../store';
+import {
+  getSelectedRowIndex,
+  getSuccessMessage,
+  uiSelectMovie,
+  uiSetSelectedRowIndex,
+  uiSetSuccessMessage,
+} from '../../store';
 
 import classes from './styles.module.scss';
 
@@ -33,14 +39,20 @@ const COLUMNS_CONFIG: GridColDef[] = [
 export const DataTable: React.FC<DataTableTypes> = ({ isLoaded, moviesData }) => {
   const dispatch = useTypedDispatch();
   const rowIndex = useTypedSelector(getSelectedRowIndex);
+  const successMessage = useTypedSelector(getSuccessMessage);
 
   const handleRowClick = useCallback((movie: MovieDataType) => dispatch(uiSelectMovie(movie)), [dispatch]);
 
   const handleSetRowIdx = useCallback(
     (newRowSelectionModel: GridRowSelectionModel) => {
       dispatch(uiSetSelectedRowIndex(newRowSelectionModel));
+
+      if (successMessage.length) {
+        //RESET the message in case we selected different movie
+        dispatch(uiSetSuccessMessage(''));
+      }
     },
-    [dispatch]
+    [dispatch, successMessage]
   );
 
   return (

@@ -5,6 +5,21 @@ export type CustomButtonProps = {
   onClick?: () => void;
   label: string;
   type?: 'button' | 'submit' | 'reset';
+  disabled?: boolean;
 };
 
 export type GridRowSelectionType = GridRowSelectionModel;
+
+export type CharacterLimitProps = {
+  charactersLeft: number;
+  LIMIT_CHAR?: number;
+  isLimit: boolean;
+};
+
+export type ReviewType = { review: string };
+
+export type SnackbarProps = {
+  condition: boolean;
+  success?: boolean;
+  message?: string;
+};
