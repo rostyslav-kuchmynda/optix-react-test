@@ -1,9 +1,11 @@
 import { MovieCompanyType, MovieType } from '../types';
 
+const { VITE_REACT_MOVIES_API } = import.meta.env;
+
 export class MoviesService {
   static async getMovieCompanies(): Promise<Array<MovieCompanyType>> {
     try {
-      const response = await fetch(`/movieCompanies`, {
+      const response = await fetch(`${VITE_REACT_MOVIES_API}/movieCompanies`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -22,7 +24,7 @@ export class MoviesService {
 
   static async getMovies(): Promise<Array<MovieType>> {
     try {
-      const response = await fetch(`/movies`, {
+      const response = await fetch(`${VITE_REACT_MOVIES_API}/movies`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -40,7 +42,7 @@ export class MoviesService {
 
   static async submitReview(message: string): Promise<{ message: string }> {
     try {
-      const response = await fetch(`/submitReview`, {
+      const response = await fetch(`${VITE_REACT_MOVIES_API}/submitReview`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

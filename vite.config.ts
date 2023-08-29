@@ -7,25 +7,25 @@ export default defineConfig({
   plugins: [react(), eslint()],
   server: {
     port: 8080,
-    proxy: {
-      '/movies': {
-        target: 'https://comforting-starlight-f3456a.netlify.app/.netlify/functions',
-        changeOrigin: true,
-        secure: false,
-        ws: true,
-      },
-      '/movieCompanies': {
-        target: 'https://comforting-starlight-f3456a.netlify.app/.netlify/functions',
-        changeOrigin: true,
-        secure: false,
-        ws: true,
-      },
-      '/submitReview': {
-        target: 'https://comforting-starlight-f3456a.netlify.app/.netlify/functions',
-        changeOrigin: true,
-        secure: false,
-        ws: true,
-      },
-    },
+    // proxy: {
+    //   '/movies': {
+    //     target: 'https://comforting-starlight-f3456a.netlify.app/.netlify/functions',
+    //     changeOrigin: true,
+    //     secure: false,
+    //     ws: true,
+    //   },
+    //   '/movieCompanies': {
+    //     target: 'https://comforting-starlight-f3456a.netlify.app/.netlify/functions',
+    //     changeOrigin: true,
+    //     secure: false,
+    //     ws: true,
+    //   },
+    //   '/submitReview': {
+    //     target: 'https://comforting-starlight-f3456a.netlify.app/.netlify/functions',
+    //     changeOrigin: true,
+    //     secure: false,
+    //     ws: true,
+    //   },
+    // },
   },
 });
